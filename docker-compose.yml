@@ -9,13 +9,27 @@ services:
         ports:
             - "8000:9000"
         volumes:
-            - .:/var/www/html
+            - .:/var/www/html:rw,delegated,uid=1000,gid=1000
         working_dir: /var/www/html
         networks:
-            - internal
+            - mf-net
+
+    db:
+        image: postgres:16.1
+        restart: on-failure
+        container_name: "mf-db"
+        environment:
+            POSTGRES_USER: default
+            POSTGRES_PASSWORD: default
+        ports:
+            - '5433:5432'
+        volumes:
+            - mf_db_data:/var/lib/postgresql/data
+        networks:
+            - mf-net
 
     nginx:
-        image: nginx:latest
+        image: nginx:1.25
         container_name: mf-server
         ports:
             - "8080:80"
@@ -24,9 +38,13 @@ services:
             - '.:/var/www/html'
         depends_on:
             - app
+            - db
         networks:
-            - internal
+            - mf-net
+
+volumes:
+    mf_db_data:
 
 networks:
-    internal:
+    mf-net:
         driver: bridge
