@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: mf-app
+        ports:
+            - "8000:9000"
+        volumes:
+            - .:/var/www/html
+        working_dir: /var/www/html
+        networks:
+            - internal
+
+    nginx:
+        image: nginx:latest
+        container_name: mf-server
+        ports:
+            - "8080:80"
+        volumes:
+            - './nginx.conf:/etc/nginx/conf.d/default.conf:ro'
+            - '.:/var/www/html'
+        depends_on:
+            - app
+        networks:
+            - internal
+
+networks:
+    internal:
+        driver: bridge
