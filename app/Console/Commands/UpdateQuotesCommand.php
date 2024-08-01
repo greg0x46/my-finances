@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Currency;
-use App\Services\PairQuotes\BtcDollarPairQuote;
-use App\UseCases\Currency\UpdateCurrencyQuote;
+use App\UseCases\UpdateCurrencyQuote;
 use Illuminate\Console\Command;
 
 class UpdateQuotesCommand extends Command

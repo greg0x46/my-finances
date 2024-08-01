@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCases\Currency;
+namespace App\UseCases;
 
 use App\Models\Currency;
 use App\Models\CurrencyQuote;
