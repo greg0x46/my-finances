@@ -20,7 +20,8 @@ class WalletFactory extends Factory
         return [
             'currency_id' => Currency::factory(),
             'name' => $this->faker->word,
-            'initial_balance' => $this->faker->randomFloat(8, 0, 100000),
+            'initial_balance' => 0,
+            'balance' => 0,
         ];
     }
 }

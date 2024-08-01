@@ -20,4 +20,9 @@ class Transaction extends Model
         'total_price',
         'date'
     ];
+
+    public function wallet()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
 }
