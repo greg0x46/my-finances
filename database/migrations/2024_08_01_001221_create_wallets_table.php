@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('currency_id');
             $table->string('name');
-            $table->decimal('initial_balance', 18, 3);
-            $table->decimal('balance', 18, 3);
+            $table->decimal('initial_balance', 18, 8);
+            $table->decimal('balance', 18, 8);
             $table->timestamps();
             $table->softDeletes();
 

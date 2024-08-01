@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('wallet_id');
             $table->enum('type', ['buy', 'sell']);
-            $table->decimal('amount', 18, 3);
-            $table->decimal('unit_price', 18, 3);
-            $table->decimal('total_price', 18, 3);
+            $table->decimal('amount', 18, 8);
+            $table->decimal('unit_price', 18, 8);
+            $table->decimal('total_price', 18, 8);
             $table->dateTime('date');
             $table->timestamps();
 

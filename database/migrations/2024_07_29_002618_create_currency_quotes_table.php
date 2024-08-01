@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('currency_id');
             $table->unsignedBigInteger('quote_currency_id');
-            $table->decimal('price', 18, 3);
+            $table->decimal('price', 18, 8);
             $table->dateTime('price_at');
             $table->timestamps();
 
